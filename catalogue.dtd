@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!ELEMENT catalogue (article+)>
+<!ATTLIST catalogue année CDATA #REQUIRED>
+<!ELEMENT article (Désignation,taillesDisp+,photo,prixTTC,description?,détail)>
+<!ATTLIST article ref ID #REQUIRED>
+<!ATTLIST article catégorie (Fille|Garçon) "Garçon">
+<!ELEMENT Désignation (#PCDATA)>
+<!ELEMENT taillesDisp (taille)>
+<!ELEMENT taille (#PCDATA)>
+<!ELEMENT photo EMPTY>
+<!ATTLIST photo source  CDATA #REQUIRED>
+<!ELEMENT prixTTC (#PCDATA)>
+<!ELEMENT description (#PCDATA)>
+<!ELEMENT  détail (#PCDATA)>

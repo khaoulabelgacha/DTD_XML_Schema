@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+    <xsd:element name="catalogue">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="article" type="articleType" minOccurs="3" maxOccurs="unbounded" />
+            </xsd:sequence>
+            <xsd:attribute name="année" fixed="2020"></xsd:attribute>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:complexType name="articleType">
+        <xsd:sequence>
+            <xsd:element name="Désignation" type="designationType"></xsd:element>
+            <xsd:element name="taillesDisp" type="taillesType"></xsd:element>
+            <xsd:element name="photo" type="photoType"></xsd:element>
+            <xsd:element name="prixTTC" type="prixType"></xsd:element>
+            <xsd:element name="description" type="xsd:string"></xsd:element>
+            <xsd:element name="détail" type="xsd:string"></xsd:element>
+        </xsd:sequence>
+        <xsd:attribute name="ref" type="refType"></xsd:attribute>
+        <xsd:attribute name="catégorie" type="categorieType"></xsd:attribute>
+    </xsd:complexType>
+    <xsd:simpleType name="designationType">
+        <xsd:restriction base="xsd:string">
+            <xsd:maxLength value="100"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+    <xsd:simpleType name="refType">
+        <xsd:restriction base="xsd:string">
+            <xsd:pattern value="A[0-9]{3}"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+    <xsd:simpleType name="categorieType">
+        <xsd:restriction base="xsd:string">
+            <xsd:enumeration value="Fille"/>
+            <xsd:enumeration value="Garçon" xml:space="default"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+    <xsd:complexType name="photoType">
+        <xsd:attribute name="source" type="xsd:string" use="required"/>
+    </xsd:complexType>
+    <xsd:simpleType name="prixType">
+        <xsd:restriction base="xsd:decimal">
+            <xsd:minInclusive value="0"/>
+            <xsd:fractionDigits value="2"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+    <xsd:complexType name="taillesType" >
+        <xsd:sequence>
+            <xsd:element name="taille" type="tailleType" minOccurs="1" maxOccurs="unbounded"></xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:simpleType name="tailleType">
+        <xsd:restriction base="xsd:string">
+            <xsd:enumeration value="Moins 2 ans"/>
+            <xsd:enumeration value="4 ans"/>
+            <xsd:enumeration value="6 ans"/>
+            <xsd:enumeration value="8 ans"/>
+            <xsd:enumeration value="10 ans"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+    
+</xsd:schema>
